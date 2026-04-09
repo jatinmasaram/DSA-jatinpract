@@ -58,3 +58,20 @@ class Cache:
 
 
 
+my_cache = Cache(2)
+
+# 2. Add some items
+my_cache.put(1, 100)
+my_cache.put(2, 200)
+
+# 3. Retrieve an item (This makes key 1 the Most Recently Used)
+print(f"Value for key 1: {my_cache.get(1)}") # Expected output: 100
+
+# 4. Add a third item (This will evict key 2, as it's now the Least Recently Used)
+my_cache.put(3, 300)
+
+# 5. Check if key 2 still exists
+print(f"Value for key 2: {my_cache.get(2)}") # Expected output: -1 (evicted)
+
+# 6. Check if key 3 exists
+print(f"Value for key 3: {my_cache.get(3)}") # Expected output: 300
